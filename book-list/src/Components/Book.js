@@ -1,8 +1,9 @@
 import "./Book.css";
 
-const Book = ({ books }) => {
+const Book = ({ books, title }) => {
   return (
     <div>
+      <h2>{title}</h2>
       {books.map((book) => (
         <div className="book-preview" key={book.id}>
           <h2>{book.title}</h2>

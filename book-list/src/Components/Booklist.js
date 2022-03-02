@@ -34,8 +34,7 @@ const Booklist = () => {
   ];
   return (
     <div className="booklist">
-      <h2>All Books</h2>
-      <Book books={bookArray} />
+      <Book books={bookArray} title="All Books" />
     </div>
   );
 };

@@ -1,10 +1,10 @@
-.books {
+.booklist {
   padding: 1rem;
   margin: 1rem auto;
   width: 50rem;
   max-width: 95%;
 }
-.books h2 {
+.booklist h2 {
   font-size: 30px;
   color: #2b50c9;
   margin-bottom: 8px;

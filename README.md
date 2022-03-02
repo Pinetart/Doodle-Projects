@@ -1,2 +1,2 @@
-# React-Projects
-Repository for doodle React projects
+## React-Projects
+Repository for doodle `React` projects

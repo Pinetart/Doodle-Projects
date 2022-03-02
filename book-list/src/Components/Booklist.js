@@ -33,7 +33,7 @@ const Booklist = () => {
     },
   ];
   return (
-    <div className="books">
+    <div className="booklist">
       <h2>All Books</h2>
       <Book books={bookArray} />
     </div>

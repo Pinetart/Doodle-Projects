@@ -1,4 +1,4 @@
-import Booklist from "../Booklist";
+import Booklist from "../Blocks/Booklist";
 import useFetch from "../Fetchers/useFetch";
 
 const Home = () => {

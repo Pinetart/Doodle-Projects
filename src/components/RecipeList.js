@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import Recipe from "./Recipe";
-// import { useRecipe } from "../hooks/useRecipe";
-import { RecipeContext } from "../context/RecipeContext";
+import { useRecipe } from "../hooks/useRecipe";
+// import { RecipeContext } from "../context/RecipeContext";
 
 const RecipeList = () => {
-  const { recipes } = useContext(RecipeContext);
-  // const { recipes } = useRecipe();
+  // const { recipes } = useContext(RecipeContext);
+  const { recipes } = useRecipe();
 
   return recipes.length > 0 ? (
     <div className="recipe-list">

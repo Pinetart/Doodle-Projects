@@ -1,19 +1,19 @@
 import React, { useContext, useState } from "react";
-// import { useRecipe } from "../hooks/useRecipe";
-import { RecipeContext } from "../context/RecipeContext";
+import { useRecipe } from "../hooks/useRecipe";
+// import { RecipeContext } from "../context/RecipeContext";
 
 const RecipeForm = () => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [description, setDescription] = useState("");
 
-  const { dispatch } = useContext(RecipeContext);
-  //   const { addRecipe } = useRecipe();
+  //   const { dispatch } = useContext(RecipeContext);
+  const { addRecipe } = useRecipe();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch({ type: "ADD_RECIPE", recipe: { title, author, description } });
-    // addRecipe(title, author, description);
+    // dispatch({ type: "ADD_RECIPE", recipe: { title, author, description } });
+    addRecipe(title, author, description);
     setTitle("");
     setAuthor("");
     setDescription("");

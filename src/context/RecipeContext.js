@@ -12,7 +12,7 @@ const recipeReducer = (state, action) => {
           title: action.recipe.title,
           author: action.recipe.author,
           description: action.recipe.description,
-          id: uuid(),
+          id: action.recipe.id,
         },
       ];
     case "REMOVE_RECIPE":
@@ -25,28 +25,28 @@ const recipeReducer = (state, action) => {
 const RecipeContextProvider = ({ children }) => {
   const [recipes, dispatch] = useReducer(recipeReducer, []);
 
-  // const addRecipe = (title, author, description) => {
-  //   dispatch({
-  //     type: "ADD_RECIPE",
-  //     payload: {
-  //       title,
-  //       author,
-  //       description,
-  //       id: uuid(),
-  //     },
-  //   });
-  // };
+  const addRecipe = (title, author, description) => {
+    dispatch({
+      type: "ADD_RECIPE",
+      recipe: {
+        title,
+        author,
+        description,
+        id: uuid(),
+      },
+    });
+  };
 
-  // const removeRecipe = (id) => {
-  //   dispatch({
-  //     type: "REMOVE_RECIPE",
-  //     payload: id,
-  //   });
-  // };
+  const removeRecipe = (id) => {
+    dispatch({
+      type: "REMOVE_RECIPE",
+      id: id,
+    });
+  };
 
   return (
-    // <RecipeContext.Provider value={{ recipes, addRecipe, removeRecipe }}>
-    <RecipeContext.Provider value={{ recipes, dispatch }}>
+    <RecipeContext.Provider value={{ recipes, addRecipe, removeRecipe }}>
+      {/* <RecipeContext.Provider value={{ recipes, dispatch }}> */}
       {children}
     </RecipeContext.Provider>
   );

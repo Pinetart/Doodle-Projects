@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext, useEffect, useReducer } from "react";
 import { v4 as uuid } from "uuid";
 
 export const RecipeContext = createContext();
@@ -23,7 +23,14 @@ const recipeReducer = (state, action) => {
 };
 
 const RecipeContextProvider = ({ children }) => {
-  const [recipes, dispatch] = useReducer(recipeReducer, []);
+  const [recipes, dispatch] = useReducer(recipeReducer, [], () => {
+    const localData = localStorage.getItem("recipes");
+    return localData ? JSON.parse(localData) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("recipes", JSON.stringify(recipes));
+  }, [recipes]);
 
   const addRecipe = (title, author, description) => {
     dispatch({

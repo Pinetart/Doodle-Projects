@@ -22,6 +22,7 @@ const RecipeForm = () => {
     <form onSubmit={handleSubmit}>
       <label htmlFor="title">Book Title:</label>
       <input
+        required
         id="title"
         type="text"
         value={title}
@@ -32,6 +33,7 @@ const RecipeForm = () => {
         id="author"
         type="text"
         value={author}
+        required
         onChange={(e) => setAuthor(e.target.value)}
       />
       <label htmlFor="description">Description:</label>
@@ -40,9 +42,10 @@ const RecipeForm = () => {
         id="description"
         rows="4"
         cols="50"
+        required
         onChange={(e) => setDescription(e.target.value)}
       />
-      <button type="submit">Add Recipe</button>
+      <input type="submit" value="ADD BOOK" />
     </form>
   );
 };

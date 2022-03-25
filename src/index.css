@@ -9,6 +9,80 @@ body {
   max-width: 800px;
   margin: 50px auto;
   width: 90%;
-  box-shadow: 1px 1px 2px 0px #00000063;
+  box-shadow: 1px 1px 4px 1px #00000063;
+  overflow: hidden;
+  border-radius: 10px 10px 10px 10px;
+  background: rgb(194, 194, 194);
+}
+.navbar {
+  padding: 10px 20px;
+  text-align: center;
+  background: #6d6d6d;
+  color: white;
+}
+.recipe-list {
+  padding: 20px;
+}
+.recipe-list ul {
+  padding: 0;
+  list-style-type: none;
+}
+.recipe-list li {
+  color: white;
+  border-radius: 4px;
+  padding: 10px;
+  margin: 15px 0px;
+  cursor: pointer;
+}
+.recipe-list li:hover {
+  opacity: 0.7;
+  transition: 0.1s;
+}
+.recipe-list .title {
+  font-weight: bold;
+  font-size: 1.3em;
+}
+.recipe-list .author {
+  font-size: 0.9em;
+  color: #ddd;
+}
+.recipe-list .description {
+  padding-top: 7px;
+  font-size: 1.1em;
+  color: rgb(245, 245, 245);
+}
+.empty {
+  margin: 20px;
+  text-align: center;
+  font-size: 1.4em;
+}
+form {
+  padding: 25px;
+}
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  margin: 6px 0 15px 0;
+  border: 0;
+  outline-color: #8b868649;
+}
+form textarea {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  outline-color: #8b868649;
+  border: 0;
+}
+input[type="submit"] {
+  margin: 15px auto;
+  background: #6d6d6d;
+  cursor: pointer;
+  color: white;
+  border: 0;
+  outline: none;
+  padding: 8px 20px;
+  display: block;
   border-radius: 5px;
+  font-size: 1em;
 }

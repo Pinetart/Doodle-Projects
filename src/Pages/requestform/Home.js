@@ -34,8 +34,8 @@ const Home = () => {
   return (
     <div>
       <h2>All Requests</h2>
-      {isLoading && <div>Please Wait...</div>}
-      {error && <div>{error}</div>}
+      {isLoading && <div style={{ marginTop: "10px" }}>Please Wait...</div>}
+      {error && <div style={{ marginTop: "10px" }}>{error}</div>}
       {data && <FormFilter changeFilter={changeFilter} />}
       {books && <Booklist books={books} />}
     </div>

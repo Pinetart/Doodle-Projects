@@ -1,11 +1,11 @@
 import { useState } from "react";
+import "./FormFilter.css";
 import useFetch from "../../Hooks/useFetch";
 
-const filterList = ["all", "open", "pending", "solved", "closed"];
-
 export default function FormFilter({ changeFilter }) {
-  const { data, error, isLoading } = useFetch("http://localhost:8000/books");
+  const { data } = useFetch("http://localhost:8000/books");
   const [currentFilter, setCurrentFilter] = useState("all");
+  const filterList = ["open", "pending", "solved", "closed"];
 
   const handleClick = (newFilter) => {
     setCurrentFilter(newFilter);
@@ -14,18 +14,39 @@ export default function FormFilter({ changeFilter }) {
 
   return (
     <div className="project-filter">
-      <nav>
-        <p>Filter by: </p>
-        {filterList.map((f) => (
+      {data && filterList && (
+        <nav>
           <button
-            key={f}
-            onClick={() => handleClick(f)}
-            className={currentFilter === f ? "active" : ""}
+            onClick={() => handleClick("all")}
+            className={currentFilter === "all" ? "active" : ""}
           >
-            {f}
+            <div className="filters">
+              <div className="filter-name">All Requests</div>
+              <div className="count">{data.length}</div>
+            </div>
           </button>
-        ))}
-      </nav>
+          {filterList.map((f) => (
+            <button
+              key={f}
+              onClick={() => handleClick(f)}
+              className={currentFilter === f ? "active" : ""}
+            >
+              <div className="filters">
+                <div className="filter-name">
+                  {f.charAt(0).toUpperCase() + f.slice(1)}
+                </div>
+                <div className="count">
+                  {
+                    data.filter((data) => {
+                      return data.category === f;
+                    }).length
+                  }
+                </div>
+              </div>
+            </button>
+          ))}
+        </nav>
+      )}
     </div>
   );
 }

@@ -2,12 +2,11 @@ import { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "./Booklist.css";
 
-const Booklist = ({ books, title }) => {
+const Booklist = ({ books }) => {
   const history = useHistory();
   const [isLoading, setIsLoading] = useState(false);
   return (
     <div>
-      <h2>{title}</h2>
       {books.map((book) => (
         <div className="book-preview" key={book.id}>
           <Link to={`/books/${book.id}`}>

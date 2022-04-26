@@ -3,7 +3,7 @@ import "./FormFilter.css";
 import useFetch from "../../Hooks/useFetch";
 
 export default function FormFilter({ changeFilter }) {
-  const { data } = useFetch("http://localhost:8000/books");
+  const { data } = useFetch("http://localhost:8000/requests");
   const [currentFilter, setCurrentFilter] = useState("all");
   const filterList = ["open", "pending", "solved", "closed"];
 

@@ -5,11 +5,12 @@
   margin-right: 25px;
   background-color: rgba(0, 0, 0, 0);
   border-radius: 10px;
-  border: #04a0ce 1.5px solid;
+  border: #04a0ce 1.8px solid;
   padding: 3px 3px 2px 5px;
   background-color: #ffffff;
   cursor: pointer;
   font-weight: 500;
+  outline: none;
 }
 .project-filter nav .active {
   background-color: #04a0ce;

@@ -1,22 +1,22 @@
 import { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import "./Booklist.css";
+import "./RequestList.css";
 
-const Booklist = ({ books }) => {
+const Requestlist = ({ requests }) => {
   const history = useHistory();
   const [isLoading, setIsLoading] = useState(false);
   return (
     <div>
-      {books.map((book) => (
-        <div className="book-preview" key={book.id}>
-          <Link to={`/books/${book.id}`}>
-            <h2>{book.title}</h2>
-            <p>Written by {book.author}</p>
+      {requests.map((request) => (
+        <div className="request-preview" key={request.id}>
+          <Link to={`/requests/${request.id}`}>
+            <h2>{request.title}</h2>
+            <p>Written by {request.author}</p>
           </Link>
           {!isLoading && (
             <button
               onClick={(e) => {
-                fetch(`http://localhost:8000/books/${book.id}`, {
+                fetch(`http://localhost:8000/requests/${request.id}`, {
                   method: "DELETE",
                 }).then(() => {
                   history.go(0);
@@ -24,11 +24,13 @@ const Booklist = ({ books }) => {
                 });
               }}
             >
-              Delete Book
+              Delete Request
             </button>
           )}
           {isLoading && (
-            <button style={{ pointerEvents: "none" }}>Deleting Book..</button>
+            <button style={{ pointerEvents: "none" }}>
+              Deleting Request..
+            </button>
           )}
         </div>
       ))}
@@ -36,4 +38,4 @@ const Booklist = ({ books }) => {
   );
 };
 
-export default Booklist;
+export default Requestlist;

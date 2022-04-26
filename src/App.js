@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Home from "./Components/Pages/Home";
-import CreateBook from "./Components/Pages/CreateBook";
-import Navbar from "./Components/UI/Navbar";
-import IndividualBook from "./Components/Pages/IndividualBook";
+import Home from "./Pages/Home";
+import CreateBook from "./Pages/CreateBook";
+import Navbar from "./Components/Navbar";
+import IndividualBook from "./Pages/IndividualBook";
 
 function App() {
   return (

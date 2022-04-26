@@ -1,5 +1,5 @@
 import "./IndividualBook.css";
-import useFetch from "../Fetchers/useFetch";
+import useFetch from "../Hooks/useFetch";
 import { useParams, useHistory } from "react-router-dom";
 
 const IndividualBook = () => {

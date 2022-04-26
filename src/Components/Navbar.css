@@ -1,0 +1,30 @@
+.navbar {
+  padding: 5px 25px 5px 25px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #cfcfcf;
+  background-color: #d4e4f4;
+}
+.navbar h1 {
+  color: #4235f1;
+}
+.navbar .links {
+  margin-right: auto;
+}
+.navbar a {
+  margin-left: 16px;
+  text-decoration: none;
+  padding: 6px;
+  outline: none;
+}
+.navbar .links a:hover {
+  color: #294e87;
+  border-bottom: solid 2px;
+  border-color: #294e87;
+}
+.navbar .links a.active {
+  color: #294e87;
+  border-bottom: solid 2px;
+  border-color: #294e87;
+}

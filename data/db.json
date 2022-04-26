@@ -11,12 +11,6 @@
       "title": "Learning React: The Tale",
       "author": "Zane Birkett",
       "description": "Lorem ipsum dolor sit amet, consectetur ut, faucibus gravida augue."
-    },
-    {
-      "id": 4,
-      "title": "JAVA for amateurs",
-      "author": "Derrick Agdomar",
-      "description": "Lorem ipsum dolor sit amet, consectetur ut, faucibus gravida augue."
     }
   ]
 }

@@ -1,12 +1,12 @@
-.book-details h2 {
+.request-details h2 {
   font-size: 20px;
   color: #4235f1;
   margin-bottom: 10px;
 }
-.book-details div {
+.request-details div {
   margin: 20px 0;
 }
-.book-details button {
+.request-details button {
   background: #4235f1;
   color: #fff;
   border: 0;

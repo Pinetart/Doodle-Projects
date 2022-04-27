@@ -5,6 +5,8 @@ import "./RequestList.css";
 const Requestlist = ({ requests }) => {
   const history = useHistory();
   const [isLoading, setIsLoading] = useState(false);
+  const headers = ["Requestor", "Title", "Status", "Priority", "Date"];
+
   return (
     <div>
       {requests.map((request) => (

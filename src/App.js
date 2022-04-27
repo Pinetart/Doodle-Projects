@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Dashboard from "./Pages/dashboard/Dashboard";
 import CreateBook from "./Pages/create/CreateBook";
 import Navbar from "./Components/Navbar";
-import IndividualBook from "./Pages/request/IndividualBook";
+import Request from "./Pages/request/Request";
 
 function App() {
   return (
@@ -17,8 +17,8 @@ function App() {
             <Route path="/createbook">
               <CreateBook />
             </Route>
-            <Route path="/books/:id">
-              <IndividualBook />
+            <Route path="/requests/:id">
+              <Request />
             </Route>
           </Switch>
         </div>

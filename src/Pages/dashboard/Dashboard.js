@@ -22,13 +22,10 @@ const Dashboard = () => {
           case "all":
             return true;
           case "open":
-            return request.category === filter;
           case "pending":
-            return request.category === filter;
           case "solved":
-            return request.category === filter;
           case "closed":
-            return request.category === filter;
+            return request.status === filter;
           default:
             return true;
         }

@@ -38,7 +38,7 @@ export default function FormFilter({ changeFilter }) {
                 <div className="count">
                   {
                     data.filter((data) => {
-                      return data.category === f;
+                      return data.status === f;
                     }).length
                   }
                 </div>

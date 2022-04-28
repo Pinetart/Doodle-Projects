@@ -49,9 +49,9 @@
   outline: solid 1.8px #1976d2;
 }
 .create .buttons {
-  max-width: 100%;
   display: flex;
   justify-content: right;
+  margin: 20px 0px;
 }
 .create button {
   background: none;
@@ -88,4 +88,9 @@
 }
 .create .buttons .back a {
   text-decoration: none;
+  color: #7e7e7e;
+}
+.create .buttons .back a:hover,
+.create .buttons .back a:focus {
+  color: #1976d2;
 }

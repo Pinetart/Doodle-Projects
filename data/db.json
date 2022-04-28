@@ -5,7 +5,7 @@
       "title": "Going Crazy",
       "requestor": "Marc Smith",
       "requestoremail": "marc.smith@caricom.org",
-      "owner": "Zane Birkett",
+      "owner": "Marc Smith",
       "owneremail": "zane.birkett@caricom.org",
       "description": "Dog Dog Dog Dog Dog Dog Dog ",
       "justification": "Lorem ipsum dolor sit amet, consectetur ut, faucibus gravida augue.",
@@ -36,6 +36,22 @@
       "impact": "Medium",
       "urgency": "Normal",
       "verification": "Lorem ipsum dolor sit amet, consectetur ut, faucibus gravida augue.",
+      "status": "open"
+    },
+    {
+      "id": "5f5407a5-74c1-41f5-a88f-62f6fa88c175",
+      "requestor": "Marc Smith",
+      "owner": "Zane Birkett",
+      "description": "qw",
+      "justification": "qw",
+      "bimpact": "qw",
+      "date": "2022-04-10",
+      "implementation": "qw",
+      "backout": "qw",
+      "risk": "Medium",
+      "cimpact": "Medium",
+      "urgency": "Expedite",
+      "verification": "qw",
       "status": "open"
     }
   ]

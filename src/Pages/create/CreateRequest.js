@@ -5,10 +5,20 @@ import useFetch from "../../Hooks/useFetch";
 import "./CreateRequest.css";
 
 const CreateRequest = () => {
-  const [title, setTitle] = useState("");
-  const [author, setAuthor] = useState("");
+  const [requestor, setRequestor] = useState("");
+  const [owner, setOwner] = useState("");
   const [description, setDescription] = useState("");
-  const [isLoading, setIsloading] = useState(false);
+  const [justification, setjustification] = useState("");
+  const [bimpact, setBimpact] = useState("");
+  const [date, setDate] = useState(new Date());
+  const [implementation, setImplementation] = useState("");
+  const [backout, setBackout] = useState("");
+  const [risk, setRisk] = useState("");
+  const [cimpact, setCimpact] = useState("");
+  const [urgency, setUrgency] = useState("");
+  const [verification, setVerification] = useState("");
+
+  const [buttonLoading, setButtonLoading] = useState(false);
   const {
     data: requests,
     error,
@@ -21,14 +31,27 @@ const CreateRequest = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setIsloading(true);
-    const request = { title, author, description };
+    setButtonLoading(true);
+    const request = {
+      requestor,
+      owner,
+      description,
+      justification,
+      bimpact,
+      date,
+      implementation,
+      backout,
+      risk,
+      cimpact,
+      urgency,
+      verification,
+    };
     fetch(`http://localhost:8000/requests`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(request),
     }).then(() => {
-      setIsloading(false);
+      setButtonLoading(false);
       history.push("/");
     });
   };
@@ -43,32 +66,88 @@ const CreateRequest = () => {
         <form onSubmit={handleSubmit}>
           <div className="grid-container">
             <div className="grid-item">
-              <label>Book title:</label>
-              <input
-                type="text"
-                value={title}
+              <label>Change Requestor: *</label>
+              <select
                 required
-                onChange={(e) => setTitle(e.target.value)}
-              ></input>
+                value={requestor}
+                onChange={(e) => setRequestor(e.target.value)}
+              >
+                <option value={""} hidden disabled>
+                  Select Requestor..
+                </option>
+                {users.map((user) => (
+                  <option value={user}>{user}</option>
+                ))}
+              </select>
             </div>
             <div className="grid-item">
-              <label>Book author:</label>
-              <input
-                type="text"
-                value={author}
+              <label>Change Owner: *</label>
+              <select
                 required
-                onChange={(e) => setAuthor(e.target.value)}
-              ></input>
+                value={owner}
+                onChange={(e) => setOwner(e.target.value)}
+              >
+                <option value={""} hidden disabled>
+                  Select Owner..
+                </option>
+                {users.map((user) => (
+                  <option value={user}>{user}</option>
+                ))}
+              </select>
             </div>
             <div className="grid-item">
-              <label>Book description:</label>
-              <textarea
+              <label>Change Description: *</label>
+              <input
                 required
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
+              ></input>
+            </div>
+            <div className="grid-item">
+              <label>Change Date/Time/Duration: *</label>
+              <input
+                type="date"
+                required
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+              ></input>
+            </div>
+            <div className="grid-item">
+              <label>Change Justification: *</label>
+              <textarea
+                required
+                value={justification}
+                rows="4"
+                onChange={(e) => setjustification(e.target.value)}
               ></textarea>
             </div>
-            <div className="grid-item">4</div>
+            <div className="grid-item">
+              <label>Change Back-Out Procedures/Tasks: *</label>
+              <textarea
+                required
+                value={backout}
+                rows="4"
+                onChange={(e) => setBackout(e.target.value)}
+              ></textarea>
+            </div>
+            <div className="grid-item">
+              <label>Change Implementation Procedures/Tasks: *</label>
+              <textarea
+                required
+                value={implementation}
+                rows="4"
+                onChange={(e) => setImplementation(e.target.value)}
+              ></textarea>
+            </div>
+            <div className="grid-item">
+              <label>Change Verification: *</label>
+              <textarea
+                required
+                value={verification}
+                rows="4"
+                onChange={(e) => setVerification(e.target.value)}
+              ></textarea>
+            </div>
             <div className="grid-item">5</div>
             <div className="grid-item">6</div>
             <div className="grid-item">7</div>
@@ -79,8 +158,8 @@ const CreateRequest = () => {
             <div className="back">
               <Link to="/">Back</Link>
             </div>
-            {!isLoading && <button>Add Request</button>}
-            {isLoading && (
+            {!buttonLoading && <button>Add Request</button>}
+            {buttonLoading && (
               <button style={{ pointerEvents: "none" }}>
                 Adding Request..
               </button>

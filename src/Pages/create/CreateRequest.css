@@ -8,6 +8,12 @@
 .create label {
   text-align: left;
   display: block;
+  color: #7e7e7e;
+  font-size: 15px;
+}
+.create form {
+  max-width: 1100px;
+  margin: 0 auto;
 }
 .create h1 {
   font-size: 20px;
@@ -16,17 +22,22 @@
   text-align: left;
 }
 .create input,
-.create textarea {
-  width: 100%;
+.create textarea,
+.create select {
+  width: 400px;
   padding: 8px 10px;
   margin: 10px 0;
-  border: 1px solid #ddd;
+  border: 1px solid #7e7e7e;
+  font-size: 14px;
+  color: #363636;
   border-radius: 8px;
   box-sizing: border-box;
   display: block;
+  resize: none;
 }
 .create textarea:focus,
-.create input:focus {
+.create input:focus,
+.create select:focus {
   outline: solid 1.8px #1976d2;
 }
 .create .buttons {
@@ -54,12 +65,11 @@
 }
 .grid-container {
   display: grid;
-  grid-template-columns: auto auto;
-  padding: 10px 20px;
+  grid-template-columns: 50% 50%;
 }
 .grid-item {
-  border: 1px solid rgba(0, 0, 0, 0.8);
-  padding: 10px 30px 30px;
+  border: 0;
+  padding: 10px 30px;
   text-align: left;
 }
 .create .buttons .back {

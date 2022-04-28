@@ -4,6 +4,7 @@
   border: 1px solid #d4d4d4;
   border-radius: 8px;
   padding: 25px 35px;
+  margin-bottom: 70px;
 }
 .create label {
   text-align: left;
@@ -21,7 +22,7 @@
   margin-bottom: 30px;
   text-align: left;
 }
-.create input,
+.textinput,
 .create textarea,
 .create select {
   width: 400px;
@@ -34,6 +35,13 @@
   box-sizing: border-box;
   display: block;
   resize: none;
+}
+.radio {
+  margin-top: 15px;
+}
+.radiobutton {
+  display: inline;
+  margin-left: 15px;
 }
 .create textarea:focus,
 .create input:focus,

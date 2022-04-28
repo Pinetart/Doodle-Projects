@@ -69,6 +69,7 @@ const CreateRequest = () => {
               <label>Change Requestor: *</label>
               <select
                 required
+                className="textinput"
                 value={requestor}
                 onChange={(e) => setRequestor(e.target.value)}
               >
@@ -84,6 +85,7 @@ const CreateRequest = () => {
               <label>Change Owner: *</label>
               <select
                 required
+                className="textInput"
                 value={owner}
                 onChange={(e) => setOwner(e.target.value)}
               >
@@ -100,6 +102,7 @@ const CreateRequest = () => {
               <input
                 required
                 value={description}
+                className="textinput"
                 onChange={(e) => setDescription(e.target.value)}
               ></input>
             </div>
@@ -107,6 +110,7 @@ const CreateRequest = () => {
               <label>Change Date/Time/Duration: *</label>
               <input
                 type="date"
+                className="textinput"
                 required
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
@@ -116,6 +120,7 @@ const CreateRequest = () => {
               <label>Change Justification: *</label>
               <textarea
                 required
+                className="textinput"
                 value={justification}
                 rows="4"
                 onChange={(e) => setjustification(e.target.value)}
@@ -125,6 +130,7 @@ const CreateRequest = () => {
               <label>Change Back-Out Procedures/Tasks: *</label>
               <textarea
                 required
+                className="textinput"
                 value={backout}
                 rows="4"
                 onChange={(e) => setBackout(e.target.value)}
@@ -134,6 +140,7 @@ const CreateRequest = () => {
               <label>Change Implementation Procedures/Tasks: *</label>
               <textarea
                 required
+                className="textinput"
                 value={implementation}
                 rows="4"
                 onChange={(e) => setImplementation(e.target.value)}
@@ -143,16 +150,124 @@ const CreateRequest = () => {
               <label>Change Verification: *</label>
               <textarea
                 required
+                className="textinput"
                 value={verification}
                 rows="4"
                 onChange={(e) => setVerification(e.target.value)}
               ></textarea>
             </div>
-            <div className="grid-item">5</div>
-            <div className="grid-item">6</div>
-            <div className="grid-item">7</div>
-            <div className="grid-item">8</div>
-            <div className="grid-item">9</div>
+            <div className="grid-item">
+              <label>Change Risk: *</label>
+              <div className="radio">
+                <input
+                  className="radiobutton"
+                  type="radio"
+                  name="risk"
+                  value="Low"
+                  required
+                  onChange={(e) => setRisk(e.target.value)}
+                />
+                <p className="radiobutton">Low</p>
+              </div>
+              <div className="radio">
+                <input
+                  className="radiobutton"
+                  type="radio"
+                  name="risk"
+                  value="Medium"
+                  onChange={(e) => setRisk(e.target.value)}
+                />
+                <p className="radiobutton">Medium</p>
+              </div>
+              <div className="radio">
+                <input
+                  className="radiobutton"
+                  type="radio"
+                  name="risk"
+                  value="High"
+                  onChange={(e) => setRisk(e.target.value)}
+                />
+                <p className="radiobutton">High</p>
+              </div>
+            </div>
+            <div className="grid-item">
+              <label>Change Impact: *</label>
+              <div className="radio">
+                <input
+                  className="radiobutton"
+                  type="radio"
+                  name="cimpact"
+                  value="Low"
+                  required
+                  onChange={(e) => setCimpact(e.target.value)}
+                />
+                <p className="radiobutton">Low</p>
+              </div>
+              <div className="radio">
+                <input
+                  className="radiobutton"
+                  type="radio"
+                  name="cimpact"
+                  value="Medium"
+                  onChange={(e) => setCimpact(e.target.value)}
+                />
+                <p className="radiobutton">Medium</p>
+              </div>
+              <div className="radio">
+                <input
+                  className="radiobutton"
+                  type="radio"
+                  name="cimpact"
+                  value="High"
+                  onChange={(e) => setCimpact(e.target.value)}
+                />
+                <p className="radiobutton">High</p>
+              </div>
+            </div>
+            <div className="grid-item" style={{ marginTop: "20px" }}>
+              <label>Change Urgency: *</label>
+              <div className="radio">
+                <input
+                  className="radiobutton"
+                  type="radio"
+                  name="urgency"
+                  value="Low"
+                  required
+                  onChange={(e) => setUrgency(e.target.value)}
+                />
+                <p className="radiobutton">Low</p>
+              </div>
+              <div className="radio">
+                <input
+                  className="radiobutton"
+                  type="radio"
+                  name="urgency"
+                  value="Emergency"
+                  onChange={(e) => setUrgency(e.target.value)}
+                />
+                <p className="radiobutton">Emergency</p>
+              </div>
+              <div className="radio">
+                <input
+                  className="radiobutton"
+                  type="radio"
+                  name="urgency"
+                  value="Expedite"
+                  onChange={(e) => setUrgency(e.target.value)}
+                />
+                <p className="radiobutton">Expedite</p>
+              </div>
+            </div>
+            <div className="grid-item" style={{ marginTop: "20px" }}>
+              <label>Business Impact: *</label>
+              <textarea
+                required
+                className="textinput"
+                value={bimpact}
+                rows="4"
+                onChange={(e) => setBimpact(e.target.value)}
+              ></textarea>
+            </div>
           </div>
           <div className="buttons">
             <div className="back">

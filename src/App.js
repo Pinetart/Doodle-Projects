@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Dashboard from "./Pages/dashboard/Dashboard";
-import CreateBook from "./Pages/create/CreateBook";
+import CreateRequest from "./Pages/create/CreateRequest";
 import Navbar from "./Components/Navbar";
 import Request from "./Pages/request/Request";
 
@@ -15,7 +15,7 @@ function App() {
               <Dashboard />
             </Route>
             <Route path="/createbook">
-              <CreateBook />
+              <CreateRequest />
             </Route>
             <Route path="/requests/:id">
               <Request />

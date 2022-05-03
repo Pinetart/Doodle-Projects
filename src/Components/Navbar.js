@@ -13,7 +13,7 @@ const Navbar = () => {
         <NavLink exact to="/">
           Home
         </NavLink>
-        <NavLink to="/createbook">Change Request Form</NavLink>
+        <NavLink to="/create">Change Request Form</NavLink>
       </div>
     </nav>
   );

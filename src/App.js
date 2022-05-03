@@ -14,7 +14,7 @@ function App() {
             <Route exact path="/">
               <Dashboard />
             </Route>
-            <Route path="/createbook">
+            <Route path="/create">
               <CreateRequest />
             </Route>
             <Route path="/requests/:id">

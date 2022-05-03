@@ -2,6 +2,9 @@ import { useState } from "react";
 import Requestlist from "../../Components/RequestList";
 import useFetch from "../../Hooks/useFetch";
 import FormFilter from "./FormFilter";
+import addIcon from "../../assets/Add-Icon.png";
+import "./Dashboard.css";
+import { NavLink } from "react-router-dom";
 
 const Dashboard = () => {
   const {
@@ -37,7 +40,14 @@ const Dashboard = () => {
       <h2>All Requests</h2>
       {isLoading && <div style={{ marginTop: "10px" }}>Please Wait...</div>}
       {error && <div style={{ marginTop: "10px" }}>{error}</div>}
-      {requests && <FormFilter changeFilter={changeFilter} />}
+      {requests && (
+        <div className="filters">
+          <FormFilter changeFilter={changeFilter} />
+          <NavLink to="/create">
+            <img src={addIcon} alt="add request" />
+          </NavLink>
+        </div>
+      )}
       {filteredRequests && <Requestlist requests={filteredRequests} />}
     </div>
   );

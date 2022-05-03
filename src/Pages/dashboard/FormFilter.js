@@ -1,9 +1,7 @@
 import { useState } from "react";
 import "./FormFilter.css";
-import useFetch from "../../Hooks/useFetch";
 
-export default function FormFilter({ changeFilter }) {
-  const { data } = useFetch("http://localhost:8000/requests");
+export default function FormFilter({ changeFilter, requests }) {
   const [currentFilter, setCurrentFilter] = useState("all");
   const filterList = ["open", "pending", "solved", "closed"];
 
@@ -14,7 +12,7 @@ export default function FormFilter({ changeFilter }) {
 
   return (
     <div className="project-filter">
-      {data && filterList && (
+      {requests && (
         <nav>
           <button
             onClick={() => handleClick("all")}
@@ -22,7 +20,7 @@ export default function FormFilter({ changeFilter }) {
           >
             <div className="filters">
               <div className="filter-name">All Requests</div>
-              <div className="count">{data.length}</div>
+              <div className="count">{requests.length}</div>
             </div>
           </button>
           {filterList.map((f) => (
@@ -37,8 +35,8 @@ export default function FormFilter({ changeFilter }) {
                 </div>
                 <div className="count">
                   {
-                    data.filter((data) => {
-                      return data.status === f;
+                    requests.filter((requests) => {
+                      return requests.status === f;
                     }).length
                   }
                 </div>

@@ -1,14 +1,17 @@
 import { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "./RequestList.css";
-
 import editIcon from "../assets/Edit-Icon.png";
 import deleteIcon from "../assets/Delete-Icon.png";
 
-const Requestlist = ({ requests }) => {
+const Requestlist = ({ requests, updateDashboard }) => {
   const history = useHistory();
   const [isLoading, setIsLoading] = useState(false);
   const headers = ["Requestor", "Title", "Status", "Priority", "Date"];
+
+  const handleClick = (id) => {
+    updateDashboard(requests.filter((request) => request.id !== id));
+  };
 
   return (
     <div>
@@ -20,27 +23,19 @@ const Requestlist = ({ requests }) => {
           </Link>
           <div className="actions">
             <img src={editIcon} alt="add request" />
-            <img src={deleteIcon} alt="add request" />
-          </div>
-          {/* {!isLoading && (
-            <button
+            <img
+              src={deleteIcon}
               onClick={(e) => {
                 fetch(`http://localhost:8000/requests/${request.id}`, {
                   method: "DELETE",
                 }).then(() => {
-                  history.go(0);
+                  handleClick(request.id);
                   setIsLoading(false);
                 });
               }}
-            >
-              Delete Request
-            </button>
-          )}
-          {isLoading && (
-            <button style={{ pointerEvents: "none" }}>
-              Deleting Request..
-            </button>
-          )} */}
+              alt="add request"
+            />
+          </div>
         </div>
       ))}
     </div>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Requestlist from "../../Components/RequestList";
 import useFetch from "../../Hooks/useFetch";
 import FormFilter from "./FormFilter";
@@ -7,16 +7,19 @@ import "./Dashboard.css";
 import { NavLink } from "react-router-dom";
 
 const Dashboard = () => {
-  const {
-    data: requests,
-    error,
-    isLoading,
-  } = useFetch("http://localhost:8000/requests");
+  const { data, error, isLoading } = useFetch("http://localhost:8000/requests");
+  const [filter, setFilter] = useState("all");
+  const [requests, setRequests] = useState(null);
 
-  const [filter, setFilter] = useState("All Requests");
+  useEffect(() => {
+    setRequests(data);
+  }, [data]);
 
   const changeFilter = (newFilter) => {
     setFilter(newFilter);
+  };
+  const updateDashboard = (array) => {
+    setRequests(array);
   };
 
   const filteredRequests = requests
@@ -42,13 +45,18 @@ const Dashboard = () => {
       {error && <div style={{ marginTop: "10px" }}>{error}</div>}
       {requests && (
         <div className="filters">
-          <FormFilter changeFilter={changeFilter} />
+          <FormFilter changeFilter={changeFilter} requests={requests} />
           <NavLink to="/create">
             <img src={addIcon} alt="add request" />
           </NavLink>
         </div>
       )}
-      {filteredRequests && <Requestlist requests={filteredRequests} />}
+      {filteredRequests && (
+        <Requestlist
+          requests={filteredRequests}
+          updateDashboard={updateDashboard}
+        />
+      )}
     </div>
   );
 };

@@ -20,6 +20,7 @@ const Dashboard = () => {
   };
   const updateDashboard = (array) => {
     setRequests(array);
+    console.log(array);
   };
 
   const filteredRequests = requests
@@ -51,9 +52,10 @@ const Dashboard = () => {
           </NavLink>
         </div>
       )}
-      {filteredRequests && (
+      {filteredRequests && requests && (
         <Requestlist
           requests={filteredRequests}
+          allRequest={requests}
           updateDashboard={updateDashboard}
         />
       )}

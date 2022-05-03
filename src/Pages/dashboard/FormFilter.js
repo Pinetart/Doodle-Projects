@@ -35,8 +35,8 @@ export default function FormFilter({ changeFilter, requests }) {
                 </div>
                 <div className="count">
                   {
-                    requests.filter((requests) => {
-                      return requests.status === f;
+                    requests.filter((request) => {
+                      return request.status === f;
                     }).length
                   }
                 </div>

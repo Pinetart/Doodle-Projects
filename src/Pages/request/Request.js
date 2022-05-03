@@ -18,6 +18,24 @@ const Request = () => {
       }
     );
   };
+  const handleDeny = (e) => {
+    fetch(`http://localhost:8000/requests/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ...request, status: "closed" }),
+    }).then(() => {
+      history.push("/");
+    });
+  };
+  const handleApprove = (e) => {
+    fetch(`http://localhost:8000/requests/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ...request, status: "pending" }),
+    }).then(() => {
+      history.push("/");
+    });
+  };
   return (
     <div className="request-details">
       {isLoading && <div>Loading...</div>}
@@ -34,6 +52,8 @@ const Request = () => {
           <div>{request.description}</div>
           <div>{request.description}</div>
           <button onClick={handleClick}>Delete request</button>
+          <button onClick={handleDeny}>Deny request</button>
+          <button onClick={handleApprove}>Approve request</button>
         </article>
       )}
     </div>

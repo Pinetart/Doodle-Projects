@@ -17,7 +17,7 @@
       "impact": "Medium",
       "urgency": "Normal",
       "verification": "Lorem ipsum dolor sit amet, consectetur ut, faucibus gravida augue.",
-      "status": "pending"
+      "status": "closed"
     },
     {
       "id": "5f5407a5-74c1-41f5-a88f-62f6fa88c175",
@@ -33,7 +33,7 @@
       "cimpact": "Medium",
       "urgency": "Expedite",
       "verification": "qw",
-      "status": "open"
+      "status": "closed"
     }
   ]
 }

@@ -4,6 +4,7 @@ import "./RequestList.css";
 import editIcon from "../assets/Edit-Icon.png";
 import deleteIcon from "../assets/Delete-Icon.png";
 import loadingIcon from "../assets/Loading-Icon.png";
+import viewIcon from "../assets/View-Icon.png";
 
 const Requestlist = ({ requests, updateDashboard, allRequest }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -24,7 +25,7 @@ const Requestlist = ({ requests, updateDashboard, allRequest }) => {
         <th></th>
       </tr>
       {requests.map((request) => (
-        <tr>
+        <tr className="loadedrequests" key={request.id}>
           <td>
             <p style={{ fontWeight: "500" }}>{request.requestor}</p>
             <p style={{ fontWeight: "300", color: "#9B9B9B" }}>
@@ -32,10 +33,23 @@ const Requestlist = ({ requests, updateDashboard, allRequest }) => {
             </p>
           </td>
           <td>{request.title}</td>
-          <td>{request.status}</td>
-          <td>{request.urgency}</td>
-          <td>{request.date}</td>
-          <td>
+          <td
+            className={
+              (request.status === "open" || request.status === "pending"
+                ? "open"
+                : null) ||
+              (request.status === "solved" ? "solved" : null) ||
+              (request.status === "closed" ? "closed" : null)
+            }
+          >
+            <button>{request.status}</button>
+          </td>
+          <td style={{ textAlign: "center" }}>{request.urgency}</td>
+          <td style={{ textAlign: "center" }}>{request.date}</td>
+          <td style={{ textAlign: "center" }}>
+            <Link to={`/requests/${request.id}`}>
+              <img src={viewIcon} alt="edit request" />
+            </Link>
             <img src={editIcon} alt="edit request" />
             {!isLoading && (
               <img

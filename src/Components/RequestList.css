@@ -22,19 +22,19 @@ th:nth-child(1) {
   width: 20%;
 }
 th:nth-child(2) {
-  width: 28%;
+  width: 30%;
 }
 th:nth-child(3) {
-  width: 10%;
+  width: 7%;
   text-align: center;
 }
 th:nth-child(4) {
   width: 10%;
-  text-align: center;
+  padding-left: 35px;
 }
 th:nth-child(5) {
   width: 10%;
-  text-align: center;
+  padding-left: 25px;
 }
 th:nth-child(6) {
   width: 10%;
@@ -67,6 +67,8 @@ td img {
   text-transform: uppercase;
   font-weight: 600;
   font-size: 14px;
+  width: 100%;
+  margin-right: 12px;
 }
 .closed button {
   background-color: transparent;
@@ -79,6 +81,7 @@ td img {
   text-transform: uppercase;
   font-weight: 600;
   font-size: 14px;
+  width: 100%;
 }
 .open button {
   border-color: #f13939;
@@ -91,6 +94,7 @@ td img {
   text-transform: uppercase;
   font-weight: 600;
   font-size: 14px;
+  width: 100%;
 }
 .loadedrequests tr:hover {
   background-color: red;

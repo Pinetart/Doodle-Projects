@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-// import useFetch from "../../Hooks/useFetch";
 import { v4 as uuidv4 } from "uuid";
 import "./CreateRequest.css";
 
@@ -20,23 +19,21 @@ const CreateRequest = () => {
   const [verification, setVerification] = useState("");
 
   const [buttonLoading, setButtonLoading] = useState(false);
-  // const {
-  //   data: requests,
-  //   error,
-  //   isLoading: loadingMessage,
-  // } = useFetch("http://localhost:8000/requests");
 
   const history = useHistory();
-  // const users = requests ? requests.map((request) => request.owner) : null;
   const users = ["Zane Birkett", "Marc Smith"];
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setButtonLoading(true);
+    const [rfirst, rlname] = requestor.split(" ");
+    const [ofirst, olname] = owner.split(" ");
     const request = {
       id: uuidv4(),
       requestor,
+      requestoremail: `${rfirst}.${rlname}@caricom.org`.toLowerCase(),
       owner,
+      owneremail: `${ofirst}.${olname}@caricom.org`.toLowerCase(),
       description,
       justification,
       bimpact,

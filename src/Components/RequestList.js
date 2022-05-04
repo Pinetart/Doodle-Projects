@@ -27,10 +27,12 @@ const Requestlist = ({ requests, updateDashboard, allRequest }) => {
       {requests.map((request) => (
         <tr className="loadedrequests" key={request.id}>
           <td>
-            <p style={{ fontWeight: "500" }}>{request.requestor}</p>
-            <p style={{ fontWeight: "300", color: "#9B9B9B" }}>
-              {request.requestoremail}
-            </p>
+            <Link to={`/requests/${request.id}`}>
+              <p style={{ fontWeight: "500" }}>{request.requestor}</p>
+              <p style={{ fontWeight: "300", color: "#9B9B9B" }}>
+                {request.requestoremail}
+              </p>
+            </Link>
           </td>
           <td>{request.title}</td>
           <td
@@ -47,9 +49,9 @@ const Requestlist = ({ requests, updateDashboard, allRequest }) => {
           <td style={{ textAlign: "center" }}>{request.urgency}</td>
           <td style={{ textAlign: "center" }}>{request.date}</td>
           <td style={{ textAlign: "center" }}>
-            <Link to={`/requests/${request.id}`}>
+            {/* <Link to={`/requests/${request.id}`}>
               <img src={viewIcon} alt="edit request" />
-            </Link>
+            </Link> */}
             <img src={editIcon} alt="edit request" />
             {!isLoading && (
               <img

@@ -50,21 +50,25 @@ const Requestlist = ({ requests, updateDashboard, allRequest }) => {
             <td style={{ paddingLeft: "35px" }}>{request.urgency}</td>
             <td style={{ paddingLeft: "25px" }}>{request.date}</td>
             <td style={{ textAlign: "center" }}>
-              <img src={editIcon} alt="edit request" />
               {!isLoading && (
-                <img
-                  src={deleteIcon}
-                  onClick={(e) => {
-                    setIsLoading(true);
-                    fetch(`http://localhost:8000/requests/${request.id}`, {
-                      method: "DELETE",
-                    }).then(() => {
-                      handleClick(request.id);
-                      setIsLoading(false);
-                    });
-                  }}
-                  alt="add request"
-                />
+                <div>
+                  <Link to={`/editrequest/${request.id}`}>
+                    <img src={editIcon} alt="edit request" />
+                  </Link>
+                  <img
+                    src={deleteIcon}
+                    onClick={(e) => {
+                      setIsLoading(true);
+                      fetch(`http://localhost:8000/requests/${request.id}`, {
+                        method: "DELETE",
+                      }).then(() => {
+                        handleClick(request.id);
+                        setIsLoading(false);
+                      });
+                    }}
+                    alt="add request"
+                  />
+                </div>
               )}
               {isLoading && (
                 <img src={loadingIcon} className="loading" alt="loading" />

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import useFetch from "../../Hooks/useFetch";
-import { useParams, useHistory, Link } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import "./Edit.css";
 import { useState } from "react";
 
@@ -26,6 +26,7 @@ function Edit() {
   const [cimpact, setCimpact] = useState("");
   const [urgency, setUrgency] = useState("");
   const [verification, setVerification] = useState("");
+  const [status, setStatus] = useState("");
   const [timeCreated, setTimeCreated] = useState("");
   const [approvalTime, setApprovalTime] = useState("");
   const [denialTime, setDenialTime] = useState("");
@@ -45,6 +46,7 @@ function Edit() {
       setCimpact(request.cimpact);
       setUrgency(request.urgency);
       setVerification(request.verification);
+      setStatus(request.status);
       setTimeCreated(request.timecreated);
       setApprovalTime(request.approvaltime);
       setDenialTime(request.denialtime);
@@ -60,7 +62,7 @@ function Edit() {
     setButtonLoading(true);
     const [rfirst, rlname] = requestor.split(" ");
     const [ofirst, olname] = owner.split(" ");
-    const request = {
+    const editedrequest = {
       id,
       requestor,
       requestoremail: `${rfirst}.${rlname}@caricom.org`.toLowerCase(),
@@ -76,16 +78,16 @@ function Edit() {
       cimpact,
       urgency,
       verification,
-      status: "open",
+      status,
+      timecreated: timeCreated,
+      denialtime: denialTime,
+      approvaltime: approvalTime,
     };
     fetch(`http://localhost:8000/requests/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        ...request,
-        timecreated: timeCreated,
-        denialtime: denialTime,
-        approvaltime: approvalTime,
+        ...editedrequest,
       }),
     }).then(() => {
       history.goBack();

@@ -54,7 +54,9 @@ const Dashboard = () => {
       )}
       {filteredRequests && requests && (
         <Requestlist
-          requests={filteredRequests}
+          requests={filteredRequests
+            .slice()
+            .sort((a, b) => new Date(b.timecreated) - new Date(a.timecreated))}
           allRequest={requests}
           updateDashboard={updateDashboard}
         />

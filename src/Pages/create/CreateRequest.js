@@ -21,7 +21,7 @@ const CreateRequest = () => {
   const [buttonLoading, setButtonLoading] = useState(false);
 
   const history = useHistory();
-  const users = ["Zane Birkett", "Marc Smith"];
+  const users = ["Zane Birkett", "Marc Smith", "David Chan", "Derrick Agdomar"];
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -45,6 +45,9 @@ const CreateRequest = () => {
       urgency,
       verification,
       status: "open",
+      timecreated: new Date(),
+      denialtime: null,
+      approvaltime: null,
     };
     fetch(`http://localhost:8000/requests`, {
       method: "POST",

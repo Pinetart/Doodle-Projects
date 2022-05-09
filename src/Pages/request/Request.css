@@ -29,6 +29,7 @@
 .actions {
   margin-left: auto;
   width: 30%;
+  margin-top: 15px;
 }
 .actions .approve {
   background: none;
@@ -65,4 +66,7 @@
 .actions .deny:hover {
   background: #f13939;
   color: #ffffff;
+}
+.information p {
+  margin: 10px 0;
 }

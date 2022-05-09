@@ -3,7 +3,6 @@ import useFetch from "../../Hooks/useFetch";
 import { useParams, useHistory, Link } from "react-router-dom";
 import "./Edit.css";
 import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 
 function Edit() {
   const history = useHistory();
@@ -27,6 +26,9 @@ function Edit() {
   const [cimpact, setCimpact] = useState("");
   const [urgency, setUrgency] = useState("");
   const [verification, setVerification] = useState("");
+  const [timeCreated, setTimeCreated] = useState("");
+  const [approvalTime, setApprovalTime] = useState("");
+  const [denialTime, setDenialTime] = useState("");
 
   useEffect(() => {
     setRequest(data);
@@ -43,6 +45,9 @@ function Edit() {
       setCimpact(request.cimpact);
       setUrgency(request.urgency);
       setVerification(request.verification);
+      setTimeCreated(request.timecreated);
+      setApprovalTime(request.approvaltime);
+      setDenialTime(request.denialtime);
     }
   }, [data, request]);
 
@@ -56,7 +61,7 @@ function Edit() {
     const [rfirst, rlname] = requestor.split(" ");
     const [ofirst, olname] = owner.split(" ");
     const request = {
-      id: uuidv4(),
+      id,
       requestor,
       requestoremail: `${rfirst}.${rlname}@caricom.org`.toLowerCase(),
       owner,
@@ -76,7 +81,12 @@ function Edit() {
     fetch(`http://localhost:8000/requests/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...request }),
+      body: JSON.stringify({
+        ...request,
+        timecreated: timeCreated,
+        denialtime: denialTime,
+        approvaltime: approvalTime,
+      }),
     }).then(() => {
       history.goBack();
     });

@@ -1,6 +1,6 @@
 import "./Request.css";
 import useFetch from "../../Hooks/useFetch";
-import { useParams, useHistory, Link, NavLink } from "react-router-dom";
+import { useParams, useHistory, NavLink } from "react-router-dom";
 import editIcon from "../../assets/Edit-Icon.png";
 import deleteIcon from "../../assets/Delete-Icon.png";
 
@@ -17,7 +17,12 @@ const Request = () => {
     fetch(`http://localhost:8000/requests/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...request, status: "closed" }),
+      body: JSON.stringify({
+        ...request,
+        status: "closed",
+        denialtime: new Date(),
+        approvaltime: null,
+      }),
     }).then(() => {
       history.push("/");
     });
@@ -26,7 +31,12 @@ const Request = () => {
     fetch(`http://localhost:8000/requests/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...request, status: "pending" }),
+      body: JSON.stringify({
+        ...request,
+        status: "pending",
+        approvaltime: new Date(),
+        denialtime: null,
+      }),
     }).then(() => {
       history.push("/");
     });
@@ -57,14 +67,19 @@ const Request = () => {
               />
             </div>
           </div>
-          <p>Written by {request.owner}</p>
-          <div>{request.description}</div>
-          <div>{request.risk}</div>
-          <div>{request.impact}</div>
-          <div>{request.urgency}</div>
-          <div>{request.status}</div>
-          <div>{request.description}</div>
-          <div>{request.description}</div>
+          <div className="information">
+            <p>Requested by: {request.requestor}</p>
+            <p>Owned by: {request.owner}</p>
+            <p>Justification: {request.justification}</p>
+            <p>Business Impact: {request.bimpact}</p>
+            <p>Date: {request.date}</p>
+            <p>Implementation Procedures: {request.implementation}</p>
+            <p>Backout Procedures: {request.backout}</p>
+            <p>Risk Rating: {request.risk}</p>
+            <p>Impact Rating: {request.cimpact}</p>
+            <p>Urgency Rating: {request.urgency}</p>
+          </div>
+
           <div className="actions">
             <button onClick={handleDeny} className="deny">
               Deny request

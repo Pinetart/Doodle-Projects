@@ -1,6 +1,6 @@
 import "./Request.css";
 import useFetch from "../../Hooks/useFetch";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory, Link } from "react-router-dom";
 
 const Request = () => {
   const history = useHistory();
@@ -53,6 +53,9 @@ const Request = () => {
           <div>{request.description}</div>
           <button onClick={handleClick}>Delete request</button>
           <button onClick={handleDeny}>Deny request</button>
+          <Link to={`/editrequest/${id}`}>
+            <button>Edit request</button>
+          </Link>
           <button onClick={handleApprove}>Approve request</button>
         </article>
       )}

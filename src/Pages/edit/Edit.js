@@ -53,7 +53,7 @@ function Edit() {
 
   const [buttonLoading, setButtonLoading] = useState(false);
 
-  const users = ["Zane Birkett", "Marc Smith"];
+  const users = ["Zane Birkett", "Marc Smith", "David Chan", "Derrick Agdomar"];
 
   const handleSubmit = (e) => {
     e.preventDefault();

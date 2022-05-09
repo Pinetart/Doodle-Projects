@@ -309,7 +309,13 @@ function Edit() {
             </div>
             <div className="buttons">
               <div className="back">
-                <Link to="/">Back</Link>
+                <p
+                  onClick={(e) => {
+                    history.goBack();
+                  }}
+                >
+                  Back
+                </p>
               </div>
               {!buttonLoading && <button>Edit Request</button>}
               {buttonLoading && (

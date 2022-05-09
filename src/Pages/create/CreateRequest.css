@@ -48,7 +48,7 @@
 .create select:focus {
   outline: solid 1.8px #1976d2;
 }
-.create .buttons {
+.buttons {
   display: flex;
   justify-content: right;
   margin: 20px 0px;
@@ -80,17 +80,24 @@
   padding: 10px 30px;
   text-align: left;
 }
-.create .buttons .back {
+.back {
   padding: 10px;
   margin: 13px 30px 10px 0px;
   text-transform: uppercase;
   font-size: 16px;
 }
-.create .buttons .back a {
+.back p {
+  text-decoration: none;
+  color: #7e7e7e;
+  cursor: pointer;
+}
+.back a {
   text-decoration: none;
   color: #7e7e7e;
 }
-.create .buttons .back a:hover,
-.create .buttons .back a:focus {
+.back a:hover,
+.back a:focus,
+.back p:hover,
+.back p:focus {
   color: #1976d2;
 }

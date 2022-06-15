@@ -4,8 +4,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const fetchSlice = createSlice({
   name: "fetch",
   initialState: {
-    data: null,
-    error: null,
+    data: [],
+    error: "",
     isLoading: false,
   },
   reducers: {
@@ -23,7 +23,7 @@ const fetchSlice = createSlice({
           }
           const data = await response.json();
           state.data = data;
-          state.error = null;
+          state.error = "";
           state.isLoading = false;
         } catch (err) {
           state.isLoading = false;
@@ -43,7 +43,7 @@ const fetchSlice = createSlice({
           if (!response.ok) {
             throw new Error("Failed to upload data");
           }
-          state.error = null;
+          state.error = "";
           state.isLoading = false;
         } catch (err) {
           state.isLoading = false;
@@ -64,7 +64,7 @@ const fetchSlice = createSlice({
           if (!response.ok) {
             throw new Error("Failed to delete data");
           }
-          state.error = null;
+          state.error = "";
           state.isLoading = false;
         } catch (err) {
           state.isLoading = false;

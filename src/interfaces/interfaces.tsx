@@ -1,8 +1,22 @@
+import { ReactNode } from "react";
 import Request from "../models/request";
 
 export type RequestContextObject = {
-  items: Request[];
+  addRequest: (request: Request) => {
+    error: string | null;
+    isLoading: boolean;
+  };
+  readRequest: (id?: string) => {
+    requests: Request[];
+    error: string | null;
+    isLoading: boolean;
+  };
+  deleteRequest: (id: string) => void;
 };
+
+export interface Props {
+  children?: ReactNode;
+}
 
 // export interface UseFetchProps {
 //   url: string;

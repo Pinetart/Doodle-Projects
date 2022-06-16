@@ -5,14 +5,14 @@ import FormFilter from "./FormFilter";
 import { NavLink } from "react-router-dom";
 import RequestList from "../../components/requestlist/RequestList";
 import useFetch from "../../hooks/useFetch";
-import { Requests } from "../../interfaces/interfaces";
+import Request from "../../models/Request";
 
 const Dashboard = () => {
   const { data, error, isLoading } = useFetch({
     url: "http://localhost:8000/requests",
   });
   const [filter, setFilter] = useState("all");
-  const [requests, setRequests] = useState<Requests | null>(null);
+  const [requests, setRequests] = useState<Request[] | null>(null);
   useEffect(() => {
     setRequests(data);
   }, [data]);
@@ -20,7 +20,7 @@ const Dashboard = () => {
   const changeFilter = (newFilter: string) => {
     setFilter(newFilter);
   };
-  const updateDashboard = (array: Requests) => {
+  const updateDashboard = (array: Request[]) => {
     setRequests(array);
   };
 
@@ -58,9 +58,9 @@ const Dashboard = () => {
           requests={filteredRequests
             .slice()
             .sort(
-              (a: Requests, b: Requests) =>
-                new Date(b.timecreated).valueOf() -
-                new Date(a.timecreated).valueOf()
+              (a: Request, b: Request) =>
+                new Date(b.timeCreated).valueOf() -
+                new Date(a.timeCreated).valueOf()
             )}
           allRequest={requests}
           updateDashboard={updateDashboard}

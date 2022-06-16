@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
-import { UseFetchProps, Requests } from "../interfaces/interfaces";
+import { UseFetchProps } from "../interfaces/interfaces";
+import Request from "../models/Request";
 
 const useFetch = ({ url }: UseFetchProps) => {
-  const [data, setData] = useState<Requests>(null);
+  const [data, setData] = useState<Request[]>([]);
+  const [singleData, setSingleData] = useState<Request>();
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -20,6 +22,7 @@ const useFetch = ({ url }: UseFetchProps) => {
       })
       .then((jsonData) => {
         setData(jsonData);
+        setSingleData(jsonData);
         setError(null);
         setIsLoading(false);
       })
@@ -33,7 +36,7 @@ const useFetch = ({ url }: UseFetchProps) => {
 
     return () => abortConn.abort();
   }, [url]);
-  return { data, error, isLoading };
+  return { data, error, isLoading, singleData };
 };
 
 export default useFetch;

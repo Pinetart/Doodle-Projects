@@ -1,19 +1,24 @@
 import "./Edit.css";
-import { useEffect } from "react";
+import { FormEvent, useEffect } from "react";
 import useFetch from "../../hooks/useFetch";
 import { useParams, useHistory } from "react-router-dom";
 import { useState } from "react";
-import { Data, ID } from "../../interfaces/interfaces";
+import { ID } from "../../interfaces/interfaces";
+import Request from "../../models/Request";
 
 function Edit() {
   const history = useHistory();
   const { id }: ID = useParams();
 
-  const { data, error, isLoading } = useFetch({
+  const {
+    singleData: data,
+    error,
+    isLoading,
+  } = useFetch({
     url: `http://localhost:8000/requests/${id}`,
   });
 
-  const [request, setRequest] = useState<any>(null);
+  const [request, setRequest] = useState<Request>();
 
   const [requestor, setRequestor] = useState("");
   const [owner, setOwner] = useState("");
@@ -28,9 +33,6 @@ function Edit() {
   const [urgency, setUrgency] = useState("");
   const [verification, setVerification] = useState("");
   const [status, setStatus] = useState("");
-  const [timeCreated, setTimeCreated] = useState("");
-  const [approvalTime, setApprovalTime] = useState("");
-  const [denialTime, setDenialTime] = useState("");
 
   useEffect(() => {
     setRequest(data);
@@ -48,42 +50,43 @@ function Edit() {
       setUrgency(request.urgency);
       setVerification(request.verification);
       setStatus(request.status);
-      setTimeCreated(request.timecreated);
-      setApprovalTime(request.approvaltime);
-      setDenialTime(request.denialtime);
-    } 
+      // setTimeCreated(request.timeCreated);
+      // setApprovalTime(request.approvalTime);
+      // setDenialTime(request.denialTime);
+    }
   }, [data, request]);
 
   const [buttonLoading, setButtonLoading] = useState(false);
 
   const users = ["Zane Birkett", "Marc Smith", "David Chan", "Derrick Agdomar"];
 
-  const handleSubmit = (e: { preventDefault: () => void }) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     setButtonLoading(true);
     const [rfirst, rlname] = requestor.split(" ");
     const [ofirst, olname] = owner.split(" ");
-    const editedrequest: Data = {
-      id,
-      requestor,
-      requestoremail: `${rfirst}.${rlname}@caricom.org`.toLowerCase(),
-      owner,
-      owneremail: `${ofirst}.${olname}@caricom.org`.toLowerCase(),
-      description,
-      justification,
-      bimpact,
-      date,
-      implementation,
+    const editedrequest = new Request(
+      data!.approvaltime,
       backout,
-      risk,
+      bimpact,
       cimpact,
-      urgency,
-      verification,
+      date,
+      data!.denialTime,
+      description,
+      id,
+      implementation,
+      justification,
+      owner,
+      `${ofirst}.${olname}@caricom.org`.toLowerCase(),
+      requestor,
+      `${rfirst}.${rlname}@caricom.org`.toLowerCase(),
+      risk,
       status,
-      timecreated: timeCreated,
-      denialtime: denialTime,
-      approvaltime: approvalTime,
-    };
+      data!.timeCreated,
+      data!.urgency,
+      data!.verification
+    );
+
     fetch(`http://localhost:8000/requests/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },

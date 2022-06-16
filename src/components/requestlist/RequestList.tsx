@@ -36,7 +36,7 @@ const Requestlist: React.FC<Props> = ({
               <Link to={`/requests/${request.id}`}>
                 <p style={{ fontWeight: "500" }}>{request.requestor}</p>
                 <p style={{ fontWeight: "300", color: "#9B9B9B" }}>
-                  {request.requestoremail}
+                  {request.requestorEmail}
                 </p>
               </Link>
             </td>

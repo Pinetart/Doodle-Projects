@@ -4,19 +4,28 @@ import { useParams, useHistory, NavLink } from "react-router-dom";
 import editIcon from "../../assets/Edit-Icon.png";
 import deleteIcon from "../../assets/Delete-Icon.png";
 import { ID } from "../../interfaces/interfaces";
+import { useEffect, useState } from "react";
+import SingleRequest from "../../models/Request";
 
 const Request = () => {
+  const [request, setRequest] = useState<SingleRequest>();
   const history = useHistory();
   const { id }: ID = useParams();
   const {
-    data: request,
+    singleData: singleRequest,
     error,
     isLoading,
   } = useFetch({
     url: `http://localhost:8000/requests/${id}`,
   });
 
-  const handleDeny = (e) => {
+  useEffect(() => {
+    if (singleRequest) {
+      setRequest(singleRequest);
+    }
+  }, [singleRequest, request]);
+
+  const handleDeny = () => {
     fetch(`http://localhost:8000/requests/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -30,7 +39,7 @@ const Request = () => {
       history.push("/");
     });
   };
-  const handleApprove = (e) => {
+  const handleApprove = () => {
     fetch(`http://localhost:8000/requests/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },

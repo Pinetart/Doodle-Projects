@@ -1,11 +1,9 @@
-// useFetch interfaces & types
+import Request from "../models/Request";
 export interface UseFetchProps {
   url: string;
 }
 
-export type Requests = any;
-
-export interface Data {
+export type RequestType = {
   approvaltime: string | Date | null;
   backout: string;
   bimpact: string;
@@ -17,25 +15,46 @@ export interface Data {
   implementation: string;
   justification: string;
   owner: string;
-  owneremail: string;
+  ownerEmail: string;
   requestor: string;
-  requestoremail: string;
+  requestorEmail: string;
   risk: string;
   status: string;
-  timecreated: string | Date;
+  timeCreated: string | Date;
   urgency: string;
   verification: string;
-}
-// export type Requests = Data[];
+};
 
 //All Props
 export interface Props {
-  requests?: Data[];
-  updateDashboard?: (array: Requests) => void;
-  allRequest?: Data[];
+  requests?: Request[];
+  updateDashboard?: (array: Request[]) => void;
+  allRequest?: Request[];
   changeFilter?: (newFilter: string) => void;
 }
 
 export type ID = {
   id: string;
 };
+
+// export type SingleRequest = {
+//   approvaltime: string | Date | null;
+//   backout: string;
+//   bimpact: string;
+//   cimpact: string;
+//   date: any;
+//   denialtime: string | Date | null;
+//   description: string;
+//   id: string;
+//   implementation: string;
+//   justification: string;
+//   owner: string;
+//   owneremail: string;
+//   requestor: string;
+//   requestoremail: string;
+//   risk: string;
+//   status: string;
+//   timecreated: string | Date;
+//   urgency: string;
+//   verification: string;
+// };

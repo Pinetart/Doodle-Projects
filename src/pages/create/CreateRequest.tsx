@@ -1,9 +1,9 @@
 import "./CreateRequest.css";
-import { useState } from "react";
+import Request from "../../models/Request";
+import { useState, FormEvent, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
-import { Data } from "../../interfaces/interfaces";
 
 const CreateRequest = () => {
   const [requestor, setRequestor] = useState("");
@@ -24,32 +24,32 @@ const CreateRequest = () => {
   const history = useHistory();
   const users = ["Zane Birkett", "Marc Smith", "David Chan", "Derrick Agdomar"];
 
-  const handleSubmit = (e: { preventDefault: () => void }) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     setButtonLoading(true);
     const [rfirst, rlname] = requestor.split(" ");
     const [ofirst, olname] = owner.split(" ");
-    const request: Data = {
-      id: uuidv4(),
-      requestor,
-      requestoremail: `${rfirst}.${rlname}@caricom.org`.toLowerCase(),
-      owner,
-      owneremail: `${ofirst}.${olname}@caricom.org`.toLowerCase(),
-      description,
-      justification,
-      bimpact,
-      date,
-      implementation,
+    const request = new Request(
+      null,
       backout,
-      risk,
+      bimpact,
       cimpact,
+      date,
+      null,
+      description,
+      uuidv4(),
+      implementation,
+      justification,
+      owner,
+      `${ofirst}.${olname}@caricom.org`.toLowerCase(),
+      requestor,
+      `${rfirst}.${rlname}@caricom.org`.toLowerCase(),
+      risk,
+      "open",
+      new Date(),
       urgency,
-      verification,
-      status: "open",
-      timecreated: new Date(),
-      denialtime: null,
-      approvaltime: null,
-    };
+      verification
+    );
     fetch(`http://localhost:8000/requests`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
